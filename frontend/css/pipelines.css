@@ -1,14 +1,42 @@
 /* ===============================
-   VARIABLES GLOBALES
+   VARIABLES GLOBALES - TEMA MORADO PROFUNDO
    =============================== */
 :root {
-    --bg-color: #0e0e11;
-    --text-color: #e2e8f0;
-    --accent-color: #a855f7;
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.12);
-    --title-size: clamp(24px, 5vw, 48px);
-    --border-gradient: linear-gradient(135deg, #a855f7, #ec4899);
+    /* Paleta principal morada */
+    --bg-color: #0d0718;
+    --text-color: #e2d6ff;
+    --accent-color: #9d4edd;
+    
+    /* Escala de morados */
+    --purple-50: #faf5ff;
+    --purple-100: #e9d5ff;
+    --purple-200: #d8b4fe;
+    --purple-300: #c084fc;
+    --purple-400: #a855f7;
+    --purple-500: #9333ea;
+    --purple-600: #7c3aed;
+    --purple-700: #6d28d9;
+    --purple-800: #5b21b6;
+    --purple-900: #4c1d95;
+    --purple-950: #2e1065;
+    
+    /* Elementos de diseño morado */
+    --glass-bg: rgba(168, 85, 247, 0.08);
+    --glass-border: rgba(157, 78, 221, 0.25);
+    --border-gradient: linear-gradient(135deg, #9d4edd, #c77dff, #7b2cbf);
+    --glass-gradient: linear-gradient(135deg, 
+        rgba(157, 78, 221, 0.15), 
+        rgba(123, 44, 191, 0.08)
+    );
+    
+    /* Sombras moradas */
+    --shadow-sm: 0 2px 8px rgba(157, 78, 221, 0.15);
+    --shadow-md: 0 8px 25px rgba(123, 44, 191, 0.25);
+    --shadow-lg: 0 15px 40px rgba(93, 33, 182, 0.3);
+    --glow-purple: 0 0 20px rgba(199, 125, 255, 0.4);
+    
+    /* Tamaños */
+    --title-size: clamp(28px, 5vw, 52px);
 }
 
 /* ===============================
@@ -22,26 +50,44 @@ html, body {
     color: var(--text-color);
     display: flex;
     flex-direction: column;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(157, 78, 221, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(123, 44, 191, 0.1) 0%, transparent 50%);
 }
 
-/* HERO PRINCIPAL */
+/* ===============================
+   HERO PRINCIPAL - ESTILO MORADO
+   =============================== */
 .hero {
     position: relative;
     padding: 4rem 1rem;
     text-align: center;
     overflow: hidden;
+    background: linear-gradient(180deg, 
+        rgba(13, 7, 24, 0.95) 0%,
+        rgba(46, 16, 101, 0.2) 100%
+    );
 }
 
 .hero-bg {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(157, 78, 221, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(199, 125, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(123, 44, 191, 0.15) 0%, transparent 50%);
     z-index: 0;
+    animation: pulse 15s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
 }
 
 .hero h1.glass {
     font-size: var(--title-size);
-    background: var(--border-gradient);
+    background: linear-gradient(135deg, #e9d5ff, #c084fc, #9d4edd);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -49,114 +95,411 @@ html, body {
     z-index: 1;
     font-weight: 800;
     margin: 0;
+    text-shadow: 
+        0 0 15px rgba(199, 125, 255, 0.3),
+        0 0 30px rgba(123, 44, 191, 0.2);
+    letter-spacing: -0.5px;
 }
 
-/* SECCIÓN DE RESULTADOS */
+/* ===============================
+   SECCIÓN DE RESULTADOS
+   =============================== */
 section.glass {
-    background: var(--glass-bg);
+    background: var(--glass-gradient);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     padding: 2rem;
     margin: 0 2rem 2rem 2rem;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    backdrop-filter: blur(16px);
+    box-shadow: 
+        var(--shadow-lg),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de borde luminoso */
+section.glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 24px;
+    padding: 2px;
+    background: linear-gradient(135deg, 
+        transparent, 
+        rgba(199, 125, 255, 0.3), 
+        transparent
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
 }
 
 #status {
     text-align: center;
     font-size: 1.1rem;
-    color: #f472b6;
+    color: var(--purple-300);
     margin-bottom: 2rem;
+    padding: 12px 20px;
+    background: rgba(157, 78, 221, 0.1);
+    border-radius: 12px;
+    border-left: 4px solid var(--purple-500);
+    font-weight: 600;
+    text-shadow: 0 0 8px rgba(199, 125, 255, 0.3);
 }
 
-/* CARD DE RESULTADOS Y TABLAS */
+/* ===============================
+   CARD DE RESULTADOS Y TABLAS
+   =============================== */
 .result-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 1.5rem;
+    background: linear-gradient(145deg, 
+        rgba(123, 44, 191, 0.08), 
+        rgba(76, 29, 149, 0.05)
+    );
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
     margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+.result-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(199, 125, 255, 0.4);
+    transform: translateY(-2px);
 }
 
 .result-card h4 {
     margin-top: 0;
-    color: var(--accent-color);
+    color: var(--purple-200);
     font-size: 1.4rem;
     display: flex;
     align-items: center;
     gap: 10px;
+    font-weight: 700;
 }
 
-/* CONTENEDOR DE TABLA (Scroll) */
+.result-card h4::before {
+    content: '✦';
+    color: var(--purple-400);
+    font-size: 1.2em;
+}
+
+/* ===============================
+   CONTENEDOR DE TABLA
+   =============================== */
 .table-container {
     width: 100%;
     overflow-x: auto;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    border: 1px solid rgba(157, 78, 221, 0.2);
+    background: linear-gradient(145deg, 
+        rgba(46, 16, 101, 0.3), 
+        rgba(76, 29, 149, 0.2)
+    );
+    box-shadow: 
+        inset 0 2px 8px rgba(0, 0, 0, 0.3),
+        var(--shadow-sm);
+    position: relative;
+}
+
+/* Cabecera de tabla fija */
+.table-container thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 table {
     width: 100%;
-    border-collapse: collapse;
-    min-width: 800px; /* Asegura que no se aplaste */
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 800px;
 }
 
 th {
-    background: rgba(168, 85, 247, 0.2);
-    color: #fff;
-    padding: 14px;
+    background: linear-gradient(135deg, 
+        var(--purple-600), 
+        var(--purple-700)
+    );
+    color: var(--purple-50);
+    padding: 16px;
     text-align: left;
     font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 2px solid var(--accent-color);
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    border-bottom: 3px solid var(--purple-400);
+    position: relative;
+}
+
+/* Efecto brillo en cabecera */
+th::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.6), 
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
 }
 
 td {
-    padding: 12px 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    font-size: 0.9rem;
-    color: #cbd5e1;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(157, 78, 221, 0.15);
+    font-size: 0.95rem;
+    color: var(--purple-100);
+    transition: all 0.2s ease;
 }
 
+/* Filas alternas */
+tbody tr:nth-child(even) {
+    background: rgba(157, 78, 221, 0.05);
+}
+
+/* Hover en filas */
 tr:hover td {
-    background: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(90deg, 
+        rgba(199, 125, 255, 0.15), 
+        rgba(168, 85, 247, 0.1)
+    );
     color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    transform: scale(1.002);
 }
 
-/* Resaltado de NULL */
+/* ===============================
+   RESALTADO DE VALORES ESPECIALES
+   =============================== */
 td:empty, .null-value {
-    color: #ef4444;
-    font-weight: bold;
+    color: #ff6b9d;
+    background: rgba(255, 107, 157, 0.1);
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-style: italic;
 }
 
-/* BOTÓN REGRESAR */
+/* Valores numéricos importantes */
+td:contains("100%"), 
+td:contains("1.0"), 
+td:contains("0.99") {
+    color: #4ade80;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(74, 222, 128, 0.3);
+}
+
+/* ===============================
+   BOTÓN REGRESAR
+   =============================== */
 .menu-btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    background: var(--border-gradient);
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, 
+        var(--purple-500), 
+        var(--purple-700)
+    );
     color: white;
     text-decoration: none;
-    border-radius: 12px;
-    font-weight: bold;
-    transition: transform 0.2s;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
     margin: 1rem auto;
+    border: none;
+    cursor: pointer;
+    box-shadow: 
+        var(--shadow-md),
+        0 0 20px rgba(157, 78, 221, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent
+    );
+    transition: left 0.5s;
+}
+
+.menu-btn:hover::before {
+    left: 100%;
 }
 
 .menu-btn:hover {
-    transform: scale(1.05);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        var(--shadow-lg),
+        0 0 30px rgba(199, 125, 255, 0.6);
+    background: linear-gradient(135deg, 
+        var(--purple-400), 
+        var(--purple-600)
+    );
 }
 
+.menu-btn:active {
+    transform: translateY(-1px);
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
 footer {
     text-align: center;
     padding: 2rem;
-    font-size: 0.8rem;
-    opacity: 0.6;
+    font-size: 0.85rem;
+    color: var(--purple-300);
+    background: linear-gradient(180deg, 
+        transparent, 
+        rgba(46, 16, 101, 0.2)
+    );
+    margin-top: auto;
+    border-top: 1px solid rgba(157, 78, 221, 0.2);
 }
 
-/* Scrollbar para la tabla */
-.table-container::-webkit-scrollbar { height: 6px; }
-.table-container::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 10px; }
+footer p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* ===============================
+   SCROLLBAR PERSONALIZADA
+   =============================== */
+.table-container::-webkit-scrollbar { 
+    height: 8px; 
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-track { 
+    background: rgba(46, 16, 101, 0.2); 
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb { 
+    background: linear-gradient(90deg, 
+        var(--purple-500), 
+        var(--purple-300)
+    ); 
+    border-radius: 10px; 
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.table-container::-webkit-scrollbar-thumb:hover { 
+    background: linear-gradient(90deg, 
+        var(--purple-400), 
+        var(--purple-200)
+    ); 
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+   =============================== */
+@media (max-width: 768px) {
+    section.glass {
+        margin: 0 1rem 1.5rem 1rem;
+        padding: 1.5rem;
+    }
+    
+    .hero {
+        padding: 3rem 1rem;
+    }
+    
+    .hero h1.glass {
+        font-size: clamp(24px, 4vw, 36px);
+    }
+    
+    .menu-btn {
+        width: 90%;
+        max-width: 300px;
+        padding: 12px 24px;
+    }
+    
+    th, td {
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .result-card {
+        padding: 1.5rem;
+    }
+    
+    .result-card h4 {
+        font-size: 1.2rem;
+    }
+    
+    #status {
+        font-size: 1rem;
+        padding: 10px 16px;
+    }
+}
+
+/* ===============================
+   ANIMACIONES Y EFECTOS ADICIONALES
+   =============================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero, section.glass {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Efecto de partículas flotantes */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 20% 30%, rgba(199, 125, 255, 0.6) 1px, transparent 0),
+        radial-gradient(1px 1px at 40% 70%, rgba(168, 85, 247, 0.4) 1px, transparent 0),
+        radial-gradient(1.5px 1.5px at 60% 20%, rgba(157, 78, 221, 0.5) 1px, transparent 0),
+        radial-gradient(1px 1px at 80% 40%, rgba(123, 44, 191, 0.3) 1px, transparent 0);
+    background-size: 300px 300px;
+    z-index: -1;
+    pointer-events: none;
+    animation: float 20s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) translateX(0); }
+    100% { transform: translateY(-150px) translateX(150px); }
+}
