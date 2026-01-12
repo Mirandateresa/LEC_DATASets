@@ -1,32 +1,15 @@
 /* ===============================
-   VARIABLES GLOBALES - TEMA MORADO
+   VARIABLES GLOBALES
    =============================== */
 :root {
-    /* Colores base morados */
-    --bg-color: #0a0a14;
-    --text-color: #e9d5ff;
-    --accent-color: #c084fc;
-    
-    /* Escala de morados */
-    --purple-light: #d8b4fe;
-    --purple-medium: #a855f7;
-    --purple-dark: #7c3aed;
-    --purple-deep: #5b21b6;
-    --purple-neon: #c770ff;
-    
-    /* Gradientes morados */
-    --border-gradient: linear-gradient(135deg, #a855f7, #7c3aed, #c084fc);
-    --glass-gradient: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(124,58,237,0.1));
-    --hover-gradient: linear-gradient(135deg, rgba(200,132,252,0.25), rgba(124,58,237,0.2));
-    
-    /* Elementos de diseño */
-    --glass-bg: rgba(168, 85, 247, 0.08);
-    --glass-border: rgba(168, 85, 247, 0.25);
-    --shadow-purple: 0 0 20px rgba(168,85,247,0.4);
-    
-    /* Tamaños */
+    --bg-color: #0e0e11;
+    --text-color: #ab0db1;
+    --accent-color: #a855f7;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
     --title-size: clamp(20px, 5vw + 1rem, 56px);
     --subtitle-size: clamp(1rem, 2.5vw + 0.5rem, 2rem);
+    --border-gradient: linear-gradient(135deg, #a855f7, #ec4899);
 }
 
 /* ===============================
@@ -38,9 +21,6 @@ html, body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    background-image: 
-        radial-gradient(circle at 10% 20%, rgba(168,85,247,0.05) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(124,58,237,0.05) 0%, transparent 20%);
 }
 
 body {
@@ -66,29 +46,19 @@ h1 {
     font-size: var(--title-size);
     text-align: center;
     color: transparent;
-    background: linear-gradient(135deg, var(--purple-light), var(--purple-neon), var(--purple-medium));
+    background: var(--border-gradient);
     -webkit-background-clip: text;
     background-clip: text;
-    text-shadow: 
-        0 0 10px rgba(200,132,252,0.4), 
-        0 0 20px rgba(168,85,247,0.3),
-        0 0 30px rgba(124,58,237,0.2);
+    text-shadow: 0 0 8px rgba(168,85,247,0.4), 0 0 16px rgba(236,72,153,0.3);
     margin-bottom: 2rem;
-    font-weight: 800;
-    letter-spacing: -0.5px;
 }
 
 h2 {
     font-size: var(--subtitle-size);
     text-align: center;
-    color: var(--purple-light);
-    text-shadow: 
-        0 0 8px rgba(200,132,252,0.6),
-        0 0 15px rgba(168,85,247,0.4);
+    color: var(--accent-color);
+    text-shadow: 0 0 6px rgba(168,85,247,0.5);
     margin-bottom: 1rem;
-    border-bottom: 2px solid rgba(168,85,247,0.3);
-    padding-bottom: 0.5rem;
-    display: inline-block;
 }
 
 /* ===============================
@@ -96,49 +66,37 @@ h2 {
    =============================== */
 .table {
     width: 100%;
-    min-width: 700px;
+    min-width: 700px; /* Garantiza que columnas no se encojan */
     border-collapse: separate;
     border-spacing: 0;
-    border-radius: 16px;
+    border-radius: 12px;
     overflow: hidden;
-    background: var(--glass-gradient);
+    background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
     margin: 0 auto 2rem auto;
-    box-shadow: var(--shadow-purple);
 }
 
 .table th {
-    padding: 14px 18px;
+    padding: 12px 16px;
     background: var(--border-gradient);
     color: #fff;
     text-transform: uppercase;
     text-align: center;
-    letter-spacing: 0.08em;
-    font-weight: 700;
-    font-size: 0.9rem;
-    border-bottom: 2px solid rgba(255,255,255,0.1);
+    letter-spacing: 0.05em;
 }
 
 .table td {
-    padding: 12px 16px;
+    padding: 10px 14px;
     text-align: center;
-    border-bottom: 1px solid rgba(168,85,247,0.15);
+    border-bottom: 1px solid rgba(171,13,177,0.2);
     color: var(--text-color);
     font-weight: 500;
-    transition: all 0.2s ease;
-}
-
-/* Celdas alternas */
-.table tbody tr:nth-child(even) td {
-    background: rgba(168,85,247,0.03);
 }
 
 /* Hover en filas */
-.table tbody tr:hover td {
-    background: var(--hover-gradient);
-    transform: translateY(-1px);
-    box-shadow: inset 0 0 15px rgba(168,85,247,0.2);
+.table tr:hover td {
+    background: rgba(168,85,247,0.05);
 }
 
 /* ===============================
@@ -149,19 +107,9 @@ h2 {
     max-width: 600px;
     display: block;
     margin: 0 auto;
-    border-radius: 16px;
-    border: 2px solid var(--glass-border);
-    box-shadow: 
-        0 0 25px rgba(168,85,247,0.4),
-        0 0 45px rgba(124,58,237,0.2);
-    transition: all 0.3s ease;
-}
-
-#confusion-img:hover {
-    transform: scale(1.01);
-    box-shadow: 
-        0 0 35px rgba(200,132,252,0.6),
-        0 0 60px rgba(168,85,247,0.3);
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 0 15px rgba(168,85,247,0.3);
 }
 
 /* ===============================
@@ -171,185 +119,70 @@ h2 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 14px 32px;
-    font-weight: 700;
-    border-radius: 12px;
-    color: #fff;
-    background: var(--border-gradient);
-    border: 1px solid rgba(255,255,255,0.2);
+    gap: 8px;
+    padding: 12px 28px;
+    font-weight: bold;
+    border-radius: 10px;
+    color: var(--text-color);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--glass-border);
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 0 auto 2rem auto;
-    font-size: 1rem;
-    text-decoration: none;
-    box-shadow: 
-        0 4px 15px rgba(168,85,247,0.3),
-        inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
 .btn-back:hover {
-    background: linear-gradient(135deg, var(--purple-medium), var(--purple-deep));
-    box-shadow: 
-        0 8px 25px rgba(168,85,247,0.5),
-        0 0 30px rgba(200,132,252,0.4),
-        inset 0 1px 0 rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 0 20px var(--accent-color);
     transform: translateY(-3px);
-    letter-spacing: 0.5px;
-}
-
-.btn-back:active {
-    transform: translateY(-1px);
-    box-shadow: 
-        0 4px 15px rgba(168,85,247,0.3),
-        inset 0 1px 0 rgba(255,255,255,0.2);
-}
-
-/* ===============================
-   PROGRESO DE EVALUACIÓN
-   =============================== */
-.progress-section {
-    margin-bottom: 2.5rem;
-    text-align: center;
-}
-
-.progress-container {
-    width: 100%;
-    max-width: 700px;
-    height: 20px;
-    margin: 0 auto;
-    background: rgba(168,85,247,0.1);
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--glass-border);
-    box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
-}
-
-.progress-bar {
-    height: 100%;
-    width: 0%;
-    background: var(--border-gradient);
-    box-shadow: 
-        0 0 15px rgba(168,85,247,0.7),
-        inset 0 1px 0 rgba(255,255,255,0.3);
-    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Efecto brillo en la barra de progreso */
-.progress-bar::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255,255,255,0.4), 
-        transparent);
-    animation: shine 2s infinite;
-}
-
-@keyframes shine {
-    0% { left: -100%; }
-    100% { left: 150%; }
-}
-
-.progress-text {
-    margin-top: 12px;
-    font-size: 1rem;
-    color: var(--purple-light);
-    text-shadow: 0 0 10px rgba(200,132,252,0.6);
-    font-weight: 600;
 }
 
 /* ===============================
    RESPONSIVE
    =============================== */
 @media (max-width: 900px) {
-    .table { 
-        min-width: 500px; 
-        border-radius: 12px;
-    }
-    
-    .container {
-        padding: 0 1rem;
-        gap: 1.5rem;
-    }
+    .table { min-width: 500px; }
 }
 
 @media (max-width: 600px) {
-    h1 { 
-        font-size: clamp(22px, 6vw, 42px);
-        margin-bottom: 1.5rem;
-    }
-    
-    h2 { 
-        font-size: clamp(1.1rem, 4vw, 1.6rem);
-        margin-bottom: 0.8rem;
-    }
-    
-    .table { 
-        min-width: 100%;
-        font-size: 0.9rem;
-    }
-    
-    .table th, 
-    .table td { 
-        padding: 8px 10px; 
-    }
-    
-    #confusion-img { 
-        max-width: 95%;
-        border-radius: 12px;
-    }
-    
-    .btn-back { 
-        padding: 12px 24px;
-        font-size: 0.95rem;
-        width: 100%;
-        max-width: 300px;
-    }
-    
-    .progress-container {
-        height: 16px;
-        max-width: 90%;
-    }
+    h1 { font-size: clamp(18px, 6vw, 40px); }
+    h2 { font-size: clamp(1rem, 4vw, 1.5rem); }
+    .table th, .table td { padding: 8px 10px; }
+    #confusion-img { max-width: 90%; }
+    .btn-back { padding: 10px 20px; }
 }
 
 /* ===============================
-   EFECTOS ADICIONALES
+   PROGRESO DE EVALUACIÓN
    =============================== */
-/* Animación sutil para el contenedor */
-.container {
-    animation: fadeIn 0.8s ease-out;
+.progress-section {
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Efecto de partículas moradas (opcional) */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
+.progress-container {
     width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(168,85,247,0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(124,58,237,0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(200,132,252,0.1) 0%, transparent 50%);
-    z-index: -1;
+    max-width: 700px;
+    height: 16px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
 }
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--border-gradient);
+    box-shadow: 0 0 12px rgba(168,85,247,0.6);
+    transition: width 0.4s ease;
+}
+
+.progress-text {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: var(--accent-color);
+    text-shadow: 0 0 6px rgba(168,85,247,0.5);
+}
+
